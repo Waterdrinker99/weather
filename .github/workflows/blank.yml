@@ -1,0 +1,64 @@
+# 由设置向导生成
+
+display_order:
+  - weather
+
+arxiv:
+  enabled: false
+  max_papers_per_run: 300
+
+hacker_news:
+  enabled: false
+
+postdoc_jobs:
+  enabled: false
+
+supervisor_updates:
+  enabled: false
+
+github_trending:
+  enabled: false
+  max_repos: 15
+
+weather:
+  enabled: true
+  city: "Edinburgh"
+  timezone: "auto"
+
+language: "zh"
+
+llm:
+  scoring_model: "google/gemini-2.5-flash-lite-preview-09-2025"
+  summarization_model: "google/gemini-2.5-flash-lite-preview-09-2025"
+  base_url: "https://openrouter.ai/api/v1"
+
+pages:
+  base_url: ""
+
+# 为后续周报月报预留的设置字段，即使后端暂时还没完全接入也可以先保留。
+# 这些字段先写进配置里不会有问题。
+weekly:
+  weather:
+    enabled: true
+    top_n: 1
+
+monthly:
+  weather:
+    enabled: true
+    top_n: 1
+
+sinks:
+  slack:
+    enabled: false
+    # 把 SLACK_WEBHOOK_URL 加进 GitHub Actions Secrets
+    max_papers: 5
+    max_hn: 3
+    max_github: 3
+  serverchan:
+    enabled: false
+    # 把 SERVERCHAN_SENDKEY 加进 GitHub Actions Secrets
+    # 文档： https://sct.ftqq.com/sendkey
+    max_papers: 5
+    max_hn: 3
+    max_github: 3
+    max_jobs: 3
